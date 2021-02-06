@@ -12,6 +12,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from './src/Pages/Welcome/Welcome'
 import Signup  from './src/Pages/Auth/Signup'
 import Login   from './src/Pages/Auth/Login'
+import Hometab from './src/Pages/Home/Hometab';
 
 const Stack = createStackNavigator()
 const options = {
@@ -44,6 +45,11 @@ const App = () => {
         <Stack.Screen 
           name="Login"
           component={Login}
+          options={options}
+        />
+        <Stack.Screen
+          name="Hometab"
+          component={Hometab}
           options={options}
         />
       </Stack.Navigator>

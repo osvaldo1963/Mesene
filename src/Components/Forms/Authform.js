@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Button, Input, Item } from 'native-base'
 
-const Authform = ({btnLabel}) => {
+const Authform = ({btnLabel, onPress}) => {
     return(
         <View style={styles.emailView}>
             <Item rounded>
@@ -11,7 +11,7 @@ const Authform = ({btnLabel}) => {
             <Item rounded>
                 <Input placeholder="password"/>
             </Item>
-            <Button rounded style={styles.emailBtn} onPress={() => navigation.navigate("Signupform")}>
+            <Button rounded style={styles.emailBtn} onPress={onPress}>
                 <Text style={styles.textColor}>{btnLabel}</Text>
             </Button>
         </View>

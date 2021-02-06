@@ -11,6 +11,7 @@ import Navbutton from '../../Components/Buttons/Navbutton'
 
 const Signup = ({ navigation }) => {
     const goback = () => navigation.goBack()
+    const navigateto = () => navigation.navigate("Hometab")
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => <Navbutton onPress={goback} />,
@@ -24,6 +25,7 @@ const Signup = ({ navigation }) => {
                     title="Sign up With" />
                 <Text>Or</Text>
                 <Authform 
+                    onPress={navigateto}
                     btnLabel="Sign up" />
                 <Authpage 
                     label="already member? " 
