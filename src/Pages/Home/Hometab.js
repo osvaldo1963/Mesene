@@ -9,18 +9,28 @@ import Grouchat from './Groupchat';
 
 const Tab = createMaterialTopTabNavigator()
 const options = {
-
+    activeTintColor: '#1DD2C1',
+    indicatorStyle: {
+        backgroundColor: 'transparent',
+    }, 
+    tabStyle: {
+        borderRadius: 10,  
+        
+    }, 
+    style: {
+        alignSelf:'center',
+        borderRadius: 15, 
+        backgroundColor: '#F7FBFF',
+        width: '94%', 
+        elevation: 0, 
+        shadowOpacity: 0
+    }
 }
 const Hometab = () => {
     return(
+        <View style={{flex: 1, backgroundColor: 'white'}}>
         <Tab.Navigator
-            tabBarOptions={{
-                activeTintColor: '#1DD2C1',
-                indicatorStyle: {
-                    backgroundColor: '#1DD2C1'
-                }
-            }}
-            >
+            tabBarOptions={options} >
             <Tab.Screen 
                 name="Inbox" 
                 component={Inbox}/>
@@ -31,6 +41,7 @@ const Hometab = () => {
                 name="Groupchat" 
                 component={Grouchat}/>
         </Tab.Navigator>
+        </View>
     )
 }
 
