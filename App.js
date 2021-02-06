@@ -10,10 +10,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import Welcome from './src/Pages/Welcome/Welcome'
-import Signup from './src/Pages/Auth/Signup'
-import Login from './src/Pages/Auth/Login'
-const Stack = createStackNavigator()
+import Signup  from './src/Pages/Auth/Signup'
+import Login   from './src/Pages/Auth/Login'
+import Signupform from './src/Pages/Auth/Signupform'
 
+const Stack = createStackNavigator()
 const options = {
   headerStyle: {
       elevation: 0, 
@@ -39,6 +40,11 @@ const App = () => {
         <Stack.Screen 
           name="Signup"
           component={Signup}
+          options={options}
+        />
+        <Stack.Screen 
+          name="Signupform"
+          component={Signupform}
           options={options}
         />
         <Stack.Screen 

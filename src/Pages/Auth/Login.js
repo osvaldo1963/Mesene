@@ -1,33 +1,53 @@
 import React from 'react'
 import {
-    StyleSheet,
     Text,
-    View
+    View, 
+    StyleSheet,
 } from 'react-native'
-import {Button} from 'native-base'
-const Login = ({ navigation }) => {
+import SocialSection from '../../Components/Buttons/SocialSection'
+import Authform from '../../Components/Forms/Authform'
+import Authpage from '../../Components/Buttons/Authpage'
+import Navbutton from '../../Components/Buttons/Navbutton'
+
+const Login = ({ navigation}) => {
+    const goback = () => navigation.goBack()
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (
-                <Button iconLeft onPress={() => {navigation.goBack()}} style={{backgroundColor: '#F2F5F8'}}>
-                   <Text style={{padding: 15}}>back</Text>
-                </Button>
-            ),
+            headerRight: () => <Navbutton onPress={goback}/>,
         })
     }, [navigation])
     return (
         <View style={styles.mainView}>
-            <Text>
-                Login
-            </Text>
+            <View style={styles.holderView}></View>
+            <View style={styles.contentView}>
+                <SocialSection 
+                    title="Log In With" />
+                <Text>Or</Text>
+                <Authform 
+                    btnLabel="Log In" />
+                <Authpage 
+                    label="need an account? " 
+                    btnLabel="Sign Up" />
+            </View>
         </View>
     )
 }
+
 const styles = StyleSheet.create({
-    mainView: {
-        flex:1, 
+    mainView: { 
+        flex: 1,
         backgroundColor: 'white'
-    }
+    }, 
+    holderView: {
+        flex:1 ,
+    },
+    contentView: {
+        flex: 3,
+        alignSelf: 'stretch',
+        height:'50%',
+        padding: 15
+    }, 
 })
+
 
 export default Login
