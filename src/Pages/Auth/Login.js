@@ -9,7 +9,7 @@ import Authform from '../../Components/Forms/Authform'
 import Authpage from '../../Components/Buttons/Authpage'
 import Navbutton from '../../Components/Buttons/Navbutton'
 
-const Login = ({ navigation}) => {
+const Login = ({ navigation }) => {
     const goback = () => navigation.goBack()
     React.useLayoutEffect(() => {
         navigation.setOptions({

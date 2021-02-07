@@ -2,9 +2,10 @@ import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import { Body, Left, ListItem, Right, Thumbnail } from 'native-base'
 
-const Cellitem = ({ item }) => {
+const Cellitem = ({ item, onPress }) => {
+    console.log(item)
     return(
-        <ListItem avatar onPress={() => console.log("")}>
+        <ListItem avatar onPress={onPress}>
             <Left>
                 <Thumbnail 
                     square

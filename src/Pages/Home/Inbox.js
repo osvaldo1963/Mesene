@@ -45,11 +45,11 @@ const DATA = [
 ];
 const cell = () => {
     return(
-        <ListItem itemDivider={false} >
+        <ListItem itemDivider style={{backgroundColor:'white'}} >
             <View>
                 <Thumbnail 
                     square
-                    style={{borderRadius: 20}}
+                    style={{borderRadius: 20, backgroundColor: 'white'}}
                     source={{ uri: 'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2181&q=80' }} />
                 <View style={{ position: 'absolute', right: 5, backgroundColor: 'lightgreen', width: 14, height: 14, borderRadius: 7}}  />
                 <Text>username</Text>
@@ -59,25 +59,28 @@ const cell = () => {
 }
 const HeaderList = () => {
     return(
-        <View>
-            <View>
-                <Text>Online Contact</Text>
+        <View >
+            <View style={{ marginLeft: 15, }}>
+                <Text style={{color:'gray'}}>Online Contact</Text>
             </View>
             
             <FlatList 
                 horizontal
                 data={DATA}
                 renderItem={cell}
+                showsHorizontalScrollIndicator={false}
                 />
         </View>
     )
 }
-const Inbox = () => {
+const Inbox = ({ navigation }) => {
+    console.log(navigation)
+    
     return(
         <SafeAreaView style={styles.mainView}>
             <FlatList 
                 data={DATA} 
-                renderItem={Cellitem}
+                renderItem={({ item }) => <Cellitem item={item} onPress={() => navigation.navigate("Message")}/>}
                 ListHeaderComponent={HeaderList}
                 keyExtractor={item => item.id} />
         </SafeAreaView>
