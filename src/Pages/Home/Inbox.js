@@ -2,7 +2,7 @@ import { Badge, ListItem, Thumbnail } from 'native-base';
 import React from 'react'
 import { SafeAreaView, StyleSheet, View, Text} from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import Cellitem from '../../Components/Buttons/Cellitem';
+import Cellitem from '../../Components/Cell/Cellitem';
 
 const DATA = [
     {
