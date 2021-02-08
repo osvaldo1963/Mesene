@@ -3,6 +3,7 @@ import React from 'react'
 import { SafeAreaView, StyleSheet, View, Text} from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Cellitem from '../../Components/Cell/Cellitem';
+import Onlinelist from '../../Components/List/Onlinelist';
 
 const DATA = [
     {
@@ -43,36 +44,7 @@ const DATA = [
     },
     
 ];
-const cell = () => {
-    return(
-        <ListItem itemDivider style={{backgroundColor:'white'}} >
-            <View>
-                <Thumbnail 
-                    square
-                    style={{borderRadius: 20, backgroundColor: 'white'}}
-                    source={{ uri: 'https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2181&q=80' }} />
-                <View style={{ position: 'absolute', right: 5, backgroundColor: 'lightgreen', width: 14, height: 14, borderRadius: 7}}  />
-                <Text>username</Text>
-            </View>
-        </ListItem>
-    )
-}
-const HeaderList = () => {
-    return(
-        <View >
-            <View style={{ marginLeft: 15, }}>
-                <Text style={{color:'gray'}}>Online Contact</Text>
-            </View>
-            
-            <FlatList 
-                horizontal
-                data={DATA}
-                renderItem={cell}
-                showsHorizontalScrollIndicator={false}
-                />
-        </View>
-    )
-}
+
 const Inbox = ({ navigation }) => {
     console.log(navigation)
     
@@ -81,7 +53,7 @@ const Inbox = ({ navigation }) => {
             <FlatList 
                 data={DATA} 
                 renderItem={({ item }) => <Cellitem item={item} onPress={() => navigation.navigate("Message")}/>}
-                ListHeaderComponent={HeaderList}
+                ListHeaderComponent={Onlinelist}
                 keyExtractor={item => item.id} />
         </SafeAreaView>
     )
