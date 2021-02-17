@@ -1,10 +1,8 @@
-import { Badge, ListItem, Thumbnail } from 'native-base';
 import React from 'react'
 import { SafeAreaView, StyleSheet, View, Text} from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import Cellitem from '../../Components/Cell/Cellitem';
 import Onlinelist from '../../Components/List/Onlinelist';
-
 const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',

@@ -47,7 +47,7 @@ const DATA = [
 const Onlinelist = () => {
     return(
         <View >
-            <View style={styles.title}>
+            <View style={styles.titleView}>
                 <Text style={styles.title}>Online Contact</Text>
             </View>
             <FlatList 
@@ -62,9 +62,11 @@ const Onlinelist = () => {
 const styles = StyleSheet.create({
     titleView: {
         marginLeft: 15,
+        marginTop: 10
     }, 
     title: {
-        color:'gray'
+        color:'gray',
+        fontWeight: 'bold'
     }
     
 })
