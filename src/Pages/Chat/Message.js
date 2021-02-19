@@ -1,6 +1,7 @@
 import React from 'react'
-import { Text, FlatList } from 'react-native'
-import { Input, ListItem, View } from 'native-base'
+import { Text, FlatList, TextInput, StyleSheet, TouchableHighlight } from 'react-native'
+import { Button, Input, ListItem, View } from 'native-base'
+
 const DATA = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -48,9 +49,34 @@ const Message = () => {
                     renderItem={Cell}
                     inverted
                     keyExtractor={item => item.id} />
+            <View style={style.messsageView} > 
+                <TextInput placeholder="message me" style={style.textInput}/>
+                <TouchableHighlight style={style.sendText} onPress={() => console.log()} >
+                    <Text style={style.sendBtnText}>send</Text>
+                </TouchableHighlight >
+
+            </View>
             
         </View>
     ) 
 }
-
+const style = StyleSheet.create({
+    messsageView: {
+        flexDirection: 'row'
+    }, 
+    textInput: {
+        flex: 5, 
+        backgroundColor: '#F7FBFF',
+    }, 
+    sendText: {
+        flex:1,
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        backgroundColor: '#F8F7F9'
+    }, 
+    sendBtnText: {
+       fontSize: 13, 
+       fontWeight: 'bold'
+    }
+})
 export default Message

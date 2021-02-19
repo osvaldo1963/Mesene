@@ -1,15 +1,20 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Button, Input, Item } from 'native-base'
+import { inject, observer } from 'mobx-react'
 
-const Authform = ({btnLabel, onPress}) => {
+const Authform = ({btnLabel, onPress, auth}) => {
     return(
         <View style={styles.emailView}>
             <Item rounded>
-                <Input placeholder="email"/>
+                <Input 
+                    placeholder="email" 
+                    onChangeText={(value) =>auth.setEmail(value)}/>
             </Item>
             <Item rounded>
-                <Input placeholder="password"/>
+                <Input 
+                    placeholder="password"
+                    onChangeText={(value) => auth.setPass(value)}/>
             </Item>
             <Button rounded style={styles.emailBtn} onPress={onPress}>
                 <Text style={styles.textColor}>{btnLabel}</Text>
@@ -32,4 +37,4 @@ const styles = StyleSheet.create({
     textColor: { color: 'white'}
 })
 
-export default Authform
+export default inject("auth")(observer(Authform))
