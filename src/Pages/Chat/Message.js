@@ -1,7 +1,18 @@
 import React from 'react'
-import { Text, FlatList, TextInput, StyleSheet, TouchableHighlight } from 'react-native'
-import { Button, Input, ListItem, View } from 'native-base'
-
+import { 
+    Text, 
+    FlatList, 
+    TextInput, 
+    StyleSheet, 
+    TouchableHighlight, 
+    SafeAreaView, 
+    KeyboardAvoidingView, 
+    Platform 
+} from 'react-native'
+import { ListItem, View } from 'native-base'
+import Navbutton from '../../Components/Buttons/Navbutton'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 const DATA = [
     {
         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -11,7 +22,7 @@ const DATA = [
         time: "3:46pm"
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bac',
       local: false,
       username: 'First Item',
       message: "I am on my way", 
@@ -38,31 +49,42 @@ const Cell = ({ item }) => {
         </ListItem>
     )
 }
-const Item = () => {
-    
-}
-const Message = () => {
+const Message = ({ navigation }) => {
+    const goback = () => navigation.goBack()
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => <Navbutton onPress={goback}/>,
+        })
+    }, [navigation])
     return(
-        <View style={{backgroundColor: 'white', flex: 1,}}>
-            <FlatList
-                    data={DATA}
-                    renderItem={Cell}
-                    inverted
-                    keyExtractor={item => item.id} />
-            <View style={style.messsageView} > 
-                <TextInput placeholder="message me" style={style.textInput}/>
-                <TouchableHighlight style={style.sendText} onPress={() => console.log()} >
-                    <Text style={style.sendBtnText}>send</Text>
-                </TouchableHighlight >
-
-            </View>
-            
-        </View>
+        <KeyboardAvoidingView 
+            style={{flex:1}}
+            behavior={Platform.OS === "ios" ? "padding" : null}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 85 : 0}>
+            <SafeAreaView style={style.mainView}>
+                <FlatList
+                        data={DATA}
+                        renderItem={Cell}
+                        inverted
+                        keyExtractor={item => item.id} />
+                <View style={style.messsageView} > 
+                    <TextInput placeholder="message me" style={style.textInput}/>
+                    <TouchableHighlight style={style.sendText} onPress={() => console.log()} >
+                        <FontAwesomeIcon icon={faPaperPlane} color="#1DD2C1"/>
+                    </TouchableHighlight >
+                </View>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
     ) 
 }
 const style = StyleSheet.create({
+    mainView: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     messsageView: {
-        flexDirection: 'row'
+        flexDirection: 'row', 
+        height: 50
     }, 
     textInput: {
         flex: 5, 

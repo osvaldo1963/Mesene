@@ -3,7 +3,6 @@ import { StyleSheet, Text } from 'react-native'
 import { Body, Left, ListItem, Right, Thumbnail } from 'native-base'
 
 const Cellitem = ({ item, onPress }) => {
-    console.log(item)
     return(
         <ListItem avatar onPress={onPress}>
             <Left>

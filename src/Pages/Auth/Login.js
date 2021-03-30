@@ -3,6 +3,8 @@ import {
     Text,
     View, 
     StyleSheet,
+    SafeAreaView,
+    KeyboardAvoidingView,
 } from 'react-native'
 import SocialSection from '../../Components/Buttons/SocialSection'
 import Authform from '../../Components/Forms/Authform'
@@ -17,23 +19,27 @@ const Login = ({ navigation, auth }) => {
             headerRight: () => <Navbutton onPress={goback}/>,
         })
     }, [navigation])
-    console.log(auth.pass)
     const login = () => auth.Login(navigation)
     return (
-        <View style={styles.mainView}>
-            <View style={styles.holderView}></View>
-            <View style={styles.contentView}>
-                <SocialSection 
-                    title="Log In With" />
-                <Text>or</Text>
-                <Authform 
-                    onPress={login}
-                    btnLabel="Log In" />
-                <Authpage 
-                    label="need an account? " 
-                    btnLabel="Sign Up" />
-            </View>
-        </View>
+        <KeyboardAvoidingView
+            style={{flex:1}}
+            behavior={Platform.OS === "ios" ? "padding" : null}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 85 : 0}>
+            <SafeAreaView style={styles.mainView}>
+                <View style={styles.holderView}></View>
+                <View style={styles.contentView}>
+                    <SocialSection 
+                        title="Log In With" />
+                    <Text>or</Text>
+                    <Authform 
+                        onPress={login}
+                        btnLabel="Log In" />
+                    <Authpage 
+                        label="need an account? " 
+                        btnLabel="Sign Up" />
+                </View>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
     )
 }
 
