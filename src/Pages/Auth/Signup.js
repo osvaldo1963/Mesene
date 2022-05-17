@@ -10,10 +10,12 @@ import SocialSection from '../../Components/Buttons/SocialSection'
 import Authform from '../../Components/Forms/Authform'
 import Authpage from '../../Components/Buttons/Authpage'
 import Navbutton from '../../Components/Buttons/Navbutton'
+import { inject, observer } from 'mobx-react'
 
-const Signup = ({ navigation }) => {
+const Signup = ({ navigation, auth}) => {
     const goback = () => navigation.goBack()
-    const navigateto = () => navigation.navigate("Hometab")
+    //const navigateto = () => navigation.navigate("Hometab")
+    const signup = () => auth.SignUp(navigation)
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => <Navbutton onPress={goback} />,
@@ -31,7 +33,7 @@ const Signup = ({ navigation }) => {
                         title="Sign up With" />
                     <Text>Or</Text>
                     <Authform 
-                        onPress={navigateto}
+                        onPress={signup}
                         btnLabel="Sign up" />
                     <Authpage 
                         label="already member? " 
@@ -59,4 +61,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Signup
+export default inject("auth")(observer(Signup))

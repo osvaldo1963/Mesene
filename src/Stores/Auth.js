@@ -1,7 +1,10 @@
 import {action, makeObservable, observable, computed, makeAutoObservable } from 'mobx'
+import firebase from 'react-native-firebase'
 import RealmApp from '../Util/Realapp'
 '3b99426f-d09f-4728-9d59-726ce8aeaa05'
+
 class auth {
+    au  = firebase.auth()
     currentUser = {}
     email = ""
     pass  = ""
@@ -29,14 +32,31 @@ class auth {
     get getCurrentUser() {
         return this.currentUser
     }
-
+    //======= methods =============
     async Login(navigation) {
         try {
-            const user = await RealmApp.emailPasswordAuth.registerUser(this.getEmail, this.getPass)
+            const user = await au()
+                .signInWithEmailAndPassword(this.getEmail, this.getPass)
+            this.clean()
             console.log(user)
         } catch(error) {
             console.log(error)
         }
+    }
+    async SignUp(navigation) {
+        try {
+            navigation.navigate("Hometab")
+            const user = await au()
+                .createUserWithEmailAndPassword(this.getEmail, this.getPass)
+            this.clean()
+            console.log(user)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    clean() {
+        this.setEmail('')
+        this.setPass('')
     }
 }
 const Auth = new auth()
