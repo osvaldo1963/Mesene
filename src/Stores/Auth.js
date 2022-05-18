@@ -1,10 +1,9 @@
 import {action, makeObservable, observable, computed, makeAutoObservable } from 'mobx'
-import firebase from 'react-native-firebase'
+import au from '@react-native-firebase/auth'
 import RealmApp from '../Util/Realapp'
 '3b99426f-d09f-4728-9d59-726ce8aeaa05'
 
 class auth {
-    au  = firebase.auth()
     currentUser = {}
     email = ""
     pass  = ""
@@ -45,10 +44,11 @@ class auth {
     }
     async SignUp(navigation) {
         try {
-            navigation.navigate("Hometab")
+            
             const user = await au()
                 .createUserWithEmailAndPassword(this.getEmail, this.getPass)
             this.clean()
+            navigation.navigate("Hometab")
             console.log(user)
         } catch(error) {
             console.log(error)
