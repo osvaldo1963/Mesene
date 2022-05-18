@@ -14,7 +14,6 @@ import { inject, observer } from 'mobx-react'
 
 const Signup = ({ navigation, auth}) => {
     const goback = () => navigation.goBack()
-    //const navigateto = () => navigation.navigate("Hometab")
     const signup = () => auth.SignUp(navigation)
     React.useLayoutEffect(() => {
         navigation.setOptions({

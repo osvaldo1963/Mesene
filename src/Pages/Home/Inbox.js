@@ -63,9 +63,7 @@ const DATA = [
     },
 ];
 
-const Inbox = ({ navigation }) => {
-    console.log(navigation)
-    
+const Inbox = ({ navigation }) => { 
     return(
         <SafeAreaView style={styles.mainView}>
             <FlatList 
@@ -73,7 +71,7 @@ const Inbox = ({ navigation }) => {
                 renderItem={({ item }) => <Cellitem item={item} onPress={() => navigation.navigate("Message")}/>}
                 ListHeaderComponent={Onlinelist}
                 keyExtractor={item => item.id} />
-            <TouchableHighlight style={styles.floatBtn}>
+            <TouchableHighlight style={styles.floatBtn} onPress={() => console.log("sdsdsdsdsdsd")}>
                 <FontAwesomeIcon icon={faCommentAlt} color="white" size={25}/>
             </TouchableHighlight>
         </SafeAreaView>

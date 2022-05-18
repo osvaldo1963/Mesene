@@ -6,9 +6,13 @@ import {
     StyleSheet, 
 } from 'react-native'
 import { Button } from 'native-base'
+import { inject, observer } from 'mobx-react'
 const bg = require('../../../Images/Welcome/Bg.png')
-const Welcome = ({navigation}) => {
+const Welcome = ({navigation, auth}) => {
   const navigateTo = (screen) => navigation.navigate(screen)
+  React.useEffect(() => {
+    auth.checkSession(navigation)
+  }, [])
   return(
     <ImageBackground source={bg} style={styles.bg}>
       <View style={styles.mainView}>
@@ -93,4 +97,4 @@ const styles = StyleSheet.create({
     height: 50,
   }
 })
-export default Welcome
+export default inject("auth")(observer(Welcome))
